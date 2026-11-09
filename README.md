@@ -1,5 +1,7 @@
 # Gopal Sharma: portfolio with a live knowledge-graph demo
 
+**Live:** https://gopalsharma1615-ai.github.io/portfolio/
+
 A static site (no build step) whose centrepiece is an interactive knowledge graph of my work. Visitors ask a
 question and watch the same **bidirectional meet-in-the-middle search** as
 [graphwalk-rag](https://github.com/gopalsharma1615-ai/graphwalk-rag) find the top-5 evidence paths:
