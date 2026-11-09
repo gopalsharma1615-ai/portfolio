@@ -1,0 +1,857 @@
+{
+ "entities": [
+  {
+   "name": "Gopal Sharma",
+   "type": "Person",
+   "description": "Senior Data Scientist working on GenAI, RAG, GraphRAG and LLM systems; M.Sc. Physics."
+  },
+  {
+   "name": "Newgen Software",
+   "type": "Organization",
+   "description": "Enterprise software company in New Delhi where Gopal works since 2023."
+  },
+  {
+   "name": "Number Theory",
+   "type": "Organization",
+   "description": "Analytics company acquired by Newgen Software; Gopal's first data-science role."
+  },
+  {
+   "name": "Senior Data Scientist",
+   "type": "Role",
+   "description": "Gopal's current role at Newgen Software (Oct 2025 - present)."
+  },
+  {
+   "name": "NIT Calicut",
+   "type": "Organization",
+   "description": "National Institute of Technology Calicut, where Gopal did his M.Sc. Physics."
+  },
+  {
+   "name": "M.Sc. Physics",
+   "type": "Education",
+   "description": "Master of Science in Physics, NIT Calicut, 2017-2019, CGPA 8.74/10."
+  },
+  {
+   "name": "CSIR-UGC NET AIR 81",
+   "type": "Achievement",
+   "description": "All India Rank 81 in CSIR-UGC NET Physical Sciences, 2019."
+  },
+  {
+   "name": "Renormalization of QFT",
+   "type": "Project",
+   "description": "Gopal's M.Sc. project on renormalization in quantum electrodynamics."
+  },
+  {
+   "name": "Quantum Electrodynamics",
+   "type": "PhysicsConcept",
+   "description": "QED: the quantum field theory of electrons, positrons and photons."
+  },
+  {
+   "name": "Feynman Diagrams",
+   "type": "PhysicsConcept",
+   "description": "Pictorial rules for computing scattering amplitudes in QED."
+  },
+  {
+   "name": "Compton Scattering",
+   "type": "Process",
+   "description": "Photon-electron scattering; its lab-frame cross section is Klein-Nishina."
+  },
+  {
+   "name": "Bhabha Scattering",
+   "type": "Process",
+   "description": "Electron-positron scattering with t- and s-channel photon exchange."
+  },
+  {
+   "name": "Moller Scattering",
+   "type": "Process",
+   "description": "Electron-electron scattering with t- and u-channel exchange."
+  },
+  {
+   "name": "Pair Production",
+   "type": "Process",
+   "description": "e+ e- -> mu+ mu- through an s-channel photon."
+  },
+  {
+   "name": "Ward-Takahashi Identity",
+   "type": "PhysicsConcept",
+   "description": "Gauge-invariance identity implying Z1 = Z2 in QED."
+  },
+  {
+   "name": "Dimensional Regularization",
+   "type": "Method",
+   "description": "Regularizes loop integrals in n = 4 - eps dimensions; poles appear as 2/eps."
+  },
+  {
+   "name": "Vacuum Polarization",
+   "type": "PhysicsConcept",
+   "description": "One-loop photon self-energy; its pole fixes Z3 and the running of alpha."
+  },
+  {
+   "name": "Electron Self-Energy",
+   "type": "PhysicsConcept",
+   "description": "One-loop correction to the electron propagator giving Z2 and the mass shift."
+  },
+  {
+   "name": "Beta Function",
+   "type": "PhysicsConcept",
+   "description": "Running of the coupling with scale; QED one loop: beta(e) = e^3/(12 pi^2)."
+  },
+  {
+   "name": "Running Coupling",
+   "type": "PhysicsConcept",
+   "description": "Coupling that changes with energy scale, e.g. 1/alpha from 137 to ~129 at M_Z."
+  },
+  {
+   "name": "Asymptotic Freedom",
+   "type": "PhysicsConcept",
+   "description": "QCD coupling weakens at high energy while beta0 = 11 - 2nf/3 > 0."
+  },
+  {
+   "name": "qft-renorm-ai",
+   "type": "Project",
+   "description": "Open-source repo turning the M.Sc. renormalization work into SymPy code plus AI experiments."
+  },
+  {
+   "name": "qftlab",
+   "type": "Technology",
+   "description": "Python package in qft-renorm-ai that derives QED counterterms symbolically."
+  },
+  {
+   "name": "SymPy",
+   "type": "Technology",
+   "description": "Python computer-algebra system."
+  },
+  {
+   "name": "Sparse Regression",
+   "type": "Method",
+   "description": "STLSQ (SINDy-style) regression selecting few terms from a library."
+  },
+  {
+   "name": "Beta0 Rediscovery",
+   "type": "Result",
+   "description": "Sparse regression on noisy alpha_s data recovers beta0 = 11 - 2nf/3; freedom lost at nf ~16.3."
+  },
+  {
+   "name": "LLM + CAS Experiment",
+   "type": "Method",
+   "description": "Benchmark of an LLM alone vs an LLM calling computer-algebra tools on 24 loop tasks."
+  },
+  {
+   "name": "graphwalk-rag",
+   "type": "Project",
+   "description": "Open-source graph RAG: LightRAG build, NetworkX/Neo4j storage, path-walking retrievers."
+  },
+  {
+   "name": "Meet-in-the-Middle Search",
+   "type": "Algorithm",
+   "description": "Bidirectional search: forward from anchors, backward from answer candidates, joined at a midpoint."
+  },
+  {
+   "name": "Answer Candidate Seeding",
+   "type": "Method",
+   "description": "Ranks the anchors' hub-guarded reachable set to propose answer nodes."
+  },
+  {
+   "name": "Hub Guard",
+   "type": "Method",
+   "description": "Never traverses nodes with degree above a threshold, removing generic distractor paths."
+  },
+  {
+   "name": "Cross-Encoder Reranking",
+   "type": "Method",
+   "description": "Scores query-candidate pairs jointly with a local transformer."
+  },
+  {
+   "name": "Guided Walk",
+   "type": "Algorithm",
+   "description": "Document-routed, question-filtered beam walk for long regulatory corpora."
+  },
+  {
+   "name": "Single-First Router",
+   "type": "Algorithm",
+   "description": "Answers single-pass and decomposes the question only on abstention."
+  },
+  {
+   "name": "Query Decomposition",
+   "type": "Method",
+   "description": "Self-ask: resolve the bridge entity, then re-query with it named."
+  },
+  {
+   "name": "Multi-hop QA",
+   "type": "Process",
+   "description": "Questions whose answer is several relations away from what they mention."
+  },
+  {
+   "name": "HotpotQA",
+   "type": "Dataset",
+   "description": "Public multi-hop QA benchmark; Gopal's graph has 52,474 nodes over 10,000 documents."
+  },
+  {
+   "name": "Multi-hop Accuracy 47% to 53%",
+   "type": "Result",
+   "description": "Meet-in-the-middle with reranked answer seeding raised clean-70 accuracy from 47% to 53%."
+  },
+  {
+   "name": "Router 76.9%",
+   "type": "Result",
+   "description": "Single-first router: 70.2% -> 76.9% on 952 questions, decomposing only 18%."
+  },
+  {
+   "name": "200x Fewer Candidates",
+   "type": "Result",
+   "description": "Gold-path recall 100% vs 88.6% for enumeration with about 200x fewer candidate paths."
+  },
+  {
+   "name": "Regulatory Knowledge Graph",
+   "type": "Project",
+   "description": "Layered graph over 371 financial-regulation documents (17,326 pages)."
+  },
+  {
+   "name": "Graph Build Cost $35",
+   "type": "Result",
+   "description": "46,508 entities and 109,572 relations for $35.1, about $2.03 per 1,000 pages."
+  },
+  {
+   "name": "LightRAG",
+   "type": "Technology",
+   "description": "Open-source graph RAG library used for entity and relation extraction."
+  },
+  {
+   "name": "Neo4j",
+   "type": "Technology",
+   "description": "Graph database; Gopal's adapter reproduced 25/25 query results and loads the graph in 7 s."
+  },
+  {
+   "name": "NetworkX",
+   "type": "Technology",
+   "description": "Python graph library used for research-time graph walks."
+  },
+  {
+   "name": "Qwen3",
+   "type": "Technology",
+   "description": "Open-weight LLM family Gopal serves with vLLM for on-premises graph building."
+  },
+  {
+   "name": "vLLM",
+   "type": "Technology",
+   "description": "High-throughput LLM serving engine."
+  },
+  {
+   "name": "layout-rag",
+   "type": "Project",
+   "description": "Open-source layout-aware PDF chunking and hybrid retrieval, CPU-only, no LLM in indexing."
+  },
+  {
+   "name": "Layout-Aware Chunking",
+   "type": "Method",
+   "description": "Recovers heading levels from typography and keeps tables intact before chunking."
+  },
+  {
+   "name": "DocLayNet YOLO",
+   "type": "Technology",
+   "description": "YOLOv8 layout detector trained on DocLayNet."
+  },
+  {
+   "name": "Hybrid Search",
+   "type": "Method",
+   "description": "Dense embeddings plus BM25 fused by reciprocal-rank fusion."
+  },
+  {
+   "name": "Milvus",
+   "type": "Technology",
+   "description": "Vector database used for air-gapped hybrid search."
+  },
+  {
+   "name": "OHR-Bench",
+   "type": "Dataset",
+   "description": "Public PDF RAG benchmark; layout pipeline page hit@5 85.5% vs 95.5% ground-truth text."
+  },
+  {
+   "name": "Table Transformer",
+   "type": "Technology",
+   "description": "DETR model for table structure; row boundary-F1 0.72, column IoU-F1 0.94."
+  },
+  {
+   "name": "rag-mcp-server",
+   "type": "Project",
+   "description": "MCP server exposing document search and graph walks as tools for AI assistants."
+  },
+  {
+   "name": "Model Context Protocol",
+   "type": "Technology",
+   "description": "Open protocol letting AI assistants call external tools."
+  },
+  {
+   "name": "openai-budget-guard",
+   "type": "Project",
+   "description": "Per-key, per-task token and cost budgets for OpenAI keys with atomic reservations."
+  },
+  {
+   "name": "research-agent",
+   "type": "Project",
+   "description": "Planned citation-verifying research agent over the MCP tools."
+  },
+  {
+   "name": "Email Intelligence Platform",
+   "type": "Project",
+   "description": "Async FastAPI + Celery + Redis platform running 7 NLP models, ~8,400 emails/hour/node."
+  },
+  {
+   "name": "FastAPI",
+   "type": "Technology",
+   "description": "Python web framework."
+  },
+  {
+   "name": "Celery",
+   "type": "Technology",
+   "description": "Distributed task queue."
+  },
+  {
+   "name": "Redis",
+   "type": "Technology",
+   "description": "In-memory data store used as broker and result store."
+  },
+  {
+   "name": "LLM Guardrails",
+   "type": "Project",
+   "description": "25+ parallel input, retrieval and output scanners: injection, PII, toxicity, hallucination."
+  },
+  {
+   "name": "Knowledge Distillation",
+   "type": "Method",
+   "description": "Llama-3 teacher-to-student for text-to-SQL; 4-bit student 54.6% vs teacher 83.3%."
+  },
+  {
+   "name": "Quantization",
+   "type": "Method",
+   "description": "Model compression with QLoRA, AWQ and GPTQ."
+  },
+  {
+   "name": "Credit Risk Scorecard",
+   "type": "Project",
+   "description": "143-function feature library and PySpark GBT models for 5 loan products."
+  },
+  {
+   "name": "PySpark",
+   "type": "Technology",
+   "description": "Distributed data processing and MLlib models."
+  }
+ ],
+ "relations": [
+  {
+   "source": "Gopal Sharma",
+   "target": "Senior Data Scientist",
+   "description": "Gopal Sharma works as Senior Data Scientist",
+   "document": "experience.md"
+  },
+  {
+   "source": "Senior Data Scientist",
+   "target": "Newgen Software",
+   "description": "the Senior Data Scientist role is at Newgen Software",
+   "document": "experience.md"
+  },
+  {
+   "source": "Gopal Sharma",
+   "target": "Number Theory",
+   "description": "Gopal started as Data Scientist at Number Theory (2022-2023)",
+   "document": "experience.md"
+  },
+  {
+   "source": "Number Theory",
+   "target": "Newgen Software",
+   "description": "Number Theory was acquired by Newgen Software",
+   "document": "experience.md"
+  },
+  {
+   "source": "Gopal Sharma",
+   "target": "M.Sc. Physics",
+   "description": "Gopal holds an M.Sc. in Physics",
+   "document": "skills_education.md"
+  },
+  {
+   "source": "M.Sc. Physics",
+   "target": "NIT Calicut",
+   "description": "the M.Sc. Physics was completed at NIT Calicut",
+   "document": "skills_education.md"
+  },
+  {
+   "source": "Gopal Sharma",
+   "target": "CSIR-UGC NET AIR 81",
+   "description": "Gopal secured All India Rank 81 in CSIR-UGC NET",
+   "document": "skills_education.md"
+  },
+  {
+   "source": "M.Sc. Physics",
+   "target": "Renormalization of QFT",
+   "description": "the M.Sc. project was Renormalization of Quantum Field Theory",
+   "document": "skills_education.md"
+  },
+  {
+   "source": "Renormalization of QFT",
+   "target": "Quantum Electrodynamics",
+   "description": "the project studies renormalization in QED",
+   "document": "qed_renormalization_thesis.txt"
+  },
+  {
+   "source": "Quantum Electrodynamics",
+   "target": "Feynman Diagrams",
+   "description": "QED amplitudes are computed with Feynman diagrams",
+   "document": "qed_renormalization_thesis.txt"
+  },
+  {
+   "source": "Feynman Diagrams",
+   "target": "Compton Scattering",
+   "description": "Feynman rules give the Compton scattering amplitude",
+   "document": "qed_renormalization_thesis.txt"
+  },
+  {
+   "source": "Feynman Diagrams",
+   "target": "Bhabha Scattering",
+   "description": "Feynman rules give Bhabha scattering",
+   "document": "qed_renormalization_thesis.txt"
+  },
+  {
+   "source": "Feynman Diagrams",
+   "target": "Moller Scattering",
+   "description": "Feynman rules give Moller scattering",
+   "document": "qed_renormalization_thesis.txt"
+  },
+  {
+   "source": "Feynman Diagrams",
+   "target": "Pair Production",
+   "description": "Feynman rules give pair production",
+   "document": "qed_renormalization_thesis.txt"
+  },
+  {
+   "source": "Renormalization of QFT",
+   "target": "Dimensional Regularization",
+   "description": "the thesis regularizes loops with dimensional regularization",
+   "document": "qed_renormalization_thesis.txt"
+  },
+  {
+   "source": "Renormalization of QFT",
+   "target": "Ward-Takahashi Identity",
+   "description": "the thesis derives the Ward-Takahashi identity",
+   "document": "qed_renormalization_thesis.txt"
+  },
+  {
+   "source": "Dimensional Regularization",
+   "target": "Vacuum Polarization",
+   "description": "dimensional regularization makes the vacuum polarization gauge invariant",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "Dimensional Regularization",
+   "target": "Electron Self-Energy",
+   "description": "the electron self-energy pole is computed in n = 4 - eps",
+   "document": "qed_renormalization_thesis.txt"
+  },
+  {
+   "source": "Ward-Takahashi Identity",
+   "target": "Electron Self-Energy",
+   "description": "the identity relates the vertex to the self-energy, Z1 = Z2",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "Vacuum Polarization",
+   "target": "Beta Function",
+   "description": "the vacuum polarization pole gives the QED beta function",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "Beta Function",
+   "target": "Running Coupling",
+   "description": "the beta function governs the running coupling",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "Beta Function",
+   "target": "Asymptotic Freedom",
+   "description": "a positive QCD beta0 implies asymptotic freedom",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "Renormalization of QFT",
+   "target": "qft-renorm-ai",
+   "description": "the M.Sc. work became the qft-renorm-ai repository",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "qft-renorm-ai",
+   "target": "qftlab",
+   "description": "qft-renorm-ai contains the qftlab package",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "qftlab",
+   "target": "SymPy",
+   "description": "qftlab derives counterterms with SymPy",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "qftlab",
+   "target": "Ward-Takahashi Identity",
+   "description": "qftlab verifies Z1 = Z2 symbolically",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "qftlab",
+   "target": "Compton Scattering",
+   "description": "qftlab reproduces Klein-Nishina from explicit traces",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "qft-renorm-ai",
+   "target": "Sparse Regression",
+   "description": "experiment A applies sparse regression to the RG equation",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "Sparse Regression",
+   "target": "Beta0 Rediscovery",
+   "description": "sparse regression rediscovers beta0 from noisy data",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "Beta0 Rediscovery",
+   "target": "Asymptotic Freedom",
+   "description": "the fit locates the loss of asymptotic freedom at nf ~16.3",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "Beta0 Rediscovery",
+   "target": "Running Coupling",
+   "description": "the method learns from running-coupling data",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "qft-renorm-ai",
+   "target": "LLM + CAS Experiment",
+   "description": "experiment B compares LLM alone vs LLM with CAS tools",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "LLM + CAS Experiment",
+   "target": "Model Context Protocol",
+   "description": "the CAS tools are served over MCP",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "Gopal Sharma",
+   "target": "qft-renorm-ai",
+   "description": "Gopal built qft-renorm-ai",
+   "document": "skills_education.md"
+  },
+  {
+   "source": "Gopal Sharma",
+   "target": "graphwalk-rag",
+   "description": "Gopal built graphwalk-rag",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "Gopal Sharma",
+   "target": "layout-rag",
+   "description": "Gopal built layout-rag",
+   "document": "project_layout-rag.md"
+  },
+  {
+   "source": "Gopal Sharma",
+   "target": "rag-mcp-server",
+   "description": "Gopal built rag-mcp-server",
+   "document": "project_rag-mcp-server.md"
+  },
+  {
+   "source": "Gopal Sharma",
+   "target": "openai-budget-guard",
+   "description": "Gopal built openai-budget-guard",
+   "document": "project_openai-budget-guard.md"
+  },
+  {
+   "source": "Gopal Sharma",
+   "target": "research-agent",
+   "description": "Gopal is designing research-agent",
+   "document": "project_research-agent.md"
+  },
+  {
+   "source": "graphwalk-rag",
+   "target": "Meet-in-the-Middle Search",
+   "description": "graphwalk-rag retrieves with bidirectional meet-in-the-middle",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "graphwalk-rag",
+   "target": "Guided Walk",
+   "description": "graphwalk-rag includes a document-routed guided walk",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "graphwalk-rag",
+   "target": "Single-First Router",
+   "description": "graphwalk-rag includes the single-first router",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "graphwalk-rag",
+   "target": "LightRAG",
+   "description": "graphwalk-rag builds graphs with LightRAG",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "graphwalk-rag",
+   "target": "Neo4j",
+   "description": "graphwalk-rag stores graphs in Neo4j via a drop-in adapter",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "graphwalk-rag",
+   "target": "NetworkX",
+   "description": "graphwalk-rag walks graphs in NetworkX",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "Meet-in-the-Middle Search",
+   "target": "Answer Candidate Seeding",
+   "description": "the backward frontier starts from seeded answer candidates",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "Meet-in-the-Middle Search",
+   "target": "Hub Guard",
+   "description": "the search never traverses hubs",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "Answer Candidate Seeding",
+   "target": "Cross-Encoder Reranking",
+   "description": "candidates are reranked by a local cross-encoder",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "Meet-in-the-Middle Search",
+   "target": "Multi-hop QA",
+   "description": "the search answers multi-hop questions",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "Multi-hop QA",
+   "target": "HotpotQA",
+   "description": "multi-hop QA is benchmarked on HotpotQA",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "Meet-in-the-Middle Search",
+   "target": "Multi-hop Accuracy 47% to 53%",
+   "description": "the search raised multi-hop accuracy to 53%",
+   "document": "experience.md"
+  },
+  {
+   "source": "Meet-in-the-Middle Search",
+   "target": "200x Fewer Candidates",
+   "description": "the search builds about 200x fewer candidate paths",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "Single-First Router",
+   "target": "Query Decomposition",
+   "description": "the router decomposes only on abstention",
+   "document": "experience.md"
+  },
+  {
+   "source": "Single-First Router",
+   "target": "Router 76.9%",
+   "description": "the router reached 76.9% on 952 questions",
+   "document": "experience.md"
+  },
+  {
+   "source": "Router 76.9%",
+   "target": "HotpotQA",
+   "description": "measured on HotpotQA questions",
+   "document": "experience.md"
+  },
+  {
+   "source": "Guided Walk",
+   "target": "Regulatory Knowledge Graph",
+   "description": "the guided walk serves the regulatory graph",
+   "document": "project_graphwalk-rag.md"
+  },
+  {
+   "source": "Senior Data Scientist",
+   "target": "Regulatory Knowledge Graph",
+   "description": "as Senior Data Scientist Gopal built the regulatory graph",
+   "document": "experience.md"
+  },
+  {
+   "source": "Senior Data Scientist",
+   "target": "Meet-in-the-Middle Search",
+   "description": "as Senior Data Scientist Gopal designed the bidirectional search",
+   "document": "experience.md"
+  },
+  {
+   "source": "Regulatory Knowledge Graph",
+   "target": "Graph Build Cost $35",
+   "description": "the build cost $35.1 for 371 documents",
+   "document": "experience.md"
+  },
+  {
+   "source": "Regulatory Knowledge Graph",
+   "target": "Qwen3",
+   "description": "an on-premises rebuild used Qwen3",
+   "document": "experience.md"
+  },
+  {
+   "source": "Regulatory Knowledge Graph",
+   "target": "Neo4j",
+   "description": "the graph backend migrated from NetworkX to Neo4j",
+   "document": "experience.md"
+  },
+  {
+   "source": "Qwen3",
+   "target": "vLLM",
+   "description": "Qwen3 is served with vLLM",
+   "document": "experience.md"
+  },
+  {
+   "source": "LightRAG",
+   "target": "Regulatory Knowledge Graph",
+   "description": "LightRAG extracted the regulatory graph's entities",
+   "document": "experience.md"
+  },
+  {
+   "source": "layout-rag",
+   "target": "Layout-Aware Chunking",
+   "description": "layout-rag chunks PDFs by layout",
+   "document": "project_layout-rag.md"
+  },
+  {
+   "source": "layout-rag",
+   "target": "Hybrid Search",
+   "description": "layout-rag retrieves with hybrid dense + BM25 search",
+   "document": "project_layout-rag.md"
+  },
+  {
+   "source": "layout-rag",
+   "target": "Cross-Encoder Reranking",
+   "description": "layout-rag reranks with a local cross-encoder",
+   "document": "project_layout-rag.md"
+  },
+  {
+   "source": "Layout-Aware Chunking",
+   "target": "DocLayNet YOLO",
+   "description": "layout is detected with DocLayNet YOLO",
+   "document": "project_layout-rag.md"
+  },
+  {
+   "source": "Layout-Aware Chunking",
+   "target": "OHR-Bench",
+   "description": "evaluated on OHR-Bench: page hit@5 85.5%",
+   "document": "project_layout-rag.md"
+  },
+  {
+   "source": "Senior Data Scientist",
+   "target": "Layout-Aware Chunking",
+   "description": "Gopal built the layout-aware chunker at work",
+   "document": "experience.md"
+  },
+  {
+   "source": "Senior Data Scientist",
+   "target": "Table Transformer",
+   "description": "Gopal built table structure recognition with Table Transformer",
+   "document": "experience.md"
+  },
+  {
+   "source": "Hybrid Search",
+   "target": "Milvus",
+   "description": "hybrid search runs on Milvus for air-gapped clients",
+   "document": "experience.md"
+  },
+  {
+   "source": "rag-mcp-server",
+   "target": "Model Context Protocol",
+   "description": "rag-mcp-server speaks the Model Context Protocol",
+   "document": "project_rag-mcp-server.md"
+  },
+  {
+   "source": "rag-mcp-server",
+   "target": "graphwalk-rag",
+   "description": "rag-mcp-server exposes graphwalk-rag walks as tools",
+   "document": "project_rag-mcp-server.md"
+  },
+  {
+   "source": "rag-mcp-server",
+   "target": "layout-rag",
+   "description": "rag-mcp-server exposes layout-rag search as a tool",
+   "document": "project_rag-mcp-server.md"
+  },
+  {
+   "source": "research-agent",
+   "target": "rag-mcp-server",
+   "description": "research-agent will call rag-mcp-server tools",
+   "document": "project_research-agent.md"
+  },
+  {
+   "source": "research-agent",
+   "target": "Single-First Router",
+   "description": "research-agent will use the single-first policy",
+   "document": "project_research-agent.md"
+  },
+  {
+   "source": "openai-budget-guard",
+   "target": "LLM + CAS Experiment",
+   "description": "budget-guard caps the paid LLM experiment",
+   "document": "project_qft-renorm-ai.md"
+  },
+  {
+   "source": "Senior Data Scientist",
+   "target": "Email Intelligence Platform",
+   "description": "Gopal architected the email intelligence platform",
+   "document": "experience.md"
+  },
+  {
+   "source": "Email Intelligence Platform",
+   "target": "FastAPI",
+   "description": "the platform serves requests with FastAPI",
+   "document": "experience.md"
+  },
+  {
+   "source": "Email Intelligence Platform",
+   "target": "Celery",
+   "description": "the platform queues work in Celery",
+   "document": "experience.md"
+  },
+  {
+   "source": "Email Intelligence Platform",
+   "target": "Redis",
+   "description": "Redis is the broker and result store",
+   "document": "experience.md"
+  },
+  {
+   "source": "Gopal Sharma",
+   "target": "LLM Guardrails",
+   "description": "Gopal implemented LLM guardrails as Data Scientist",
+   "document": "experience.md"
+  },
+  {
+   "source": "Gopal Sharma",
+   "target": "Knowledge Distillation",
+   "description": "Gopal ran Llama-3 knowledge distillation",
+   "document": "experience.md"
+  },
+  {
+   "source": "Knowledge Distillation",
+   "target": "Quantization",
+   "description": "the student was quantized to 4 bits",
+   "document": "experience.md"
+  },
+  {
+   "source": "Number Theory",
+   "target": "Credit Risk Scorecard",
+   "description": "at Number Theory Gopal built the credit risk scorecard",
+   "document": "experience.md"
+  },
+  {
+   "source": "Credit Risk Scorecard",
+   "target": "PySpark",
+   "description": "models were trained in PySpark",
+   "document": "experience.md"
+  }
+ ]
+}

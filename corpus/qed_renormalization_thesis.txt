@@ -1,0 +1,903 @@
+# Renormalization of Quantum Field Theory (M.Sc. project, Gopal Sharma, NIT Calicut)
+
+                              CONTENTS
+
+INTRODUCTION                            1
+
+FEYNMAN DIAGRAMS                        2
+
+PHOTON PROPAGATOR                       6
+
+QUANTUM ELECTRODYNAMICS                 8
+
+SCATTERING MATRIX                       11
+  Photon pair production                12
+  Compton scattering                    13
+  Möller scattering                     14
+  Bhabha scattering                     15
+
+WARD-TAKAHASHI IDENTITY IN QED          16
+
+REGULARIZATION OF FEYNMAN DIAGRAMS      17
+  Dimensional Regularization            17
+     Calculations in QED                17
+
+RENORMALIZATION THEORY                  21
+
+CONCLUSION                              25
+
+REFERENCES                              26
+                                     INTRODUCTION
+
+Quantum field theory provides a framework for the description of three fundamental interactions
+(strong, weak and electromagnetic), phase transitions in particle physics and condensed-matter
+physics. In which Quantum Electrodynamics is first theory which was successful in describing
+the behaviour of subatomic particles which also describes the interaction of light with matter in a
+better way. This theory deals with creating and annihilating the particles which is very essential
+for the description of subatomic particles. Richard Feynman used the pictorial tools to express
+the mathematics of different interaction to calculate their probability amplitude called Feynman
+diagrams and used it in solving the problems of quantum electrodynamics which actually
+produced the most precise results. In QED theory renormalization is required to treat infinities
+which appear in calculated quantities like mass and charge of electron.Renormalization is a
+procedure to adjust the theoretical parameters describing a system in such a way as not to change
+it’s measurable properties.
+
+                                                 1
+     1. FEYNMAN DIAGRAMS
+In theoretical physics, Feynman diagrams are pictorial representations of the mathematical
+expressions describing the behavior of subatomic particles. The scheme is named after its
+inventor, American physicist Richard Feynman, and was first introduced in 1948. The interaction
+of sub-atomic particles can be complex and difficult to understand intuitively. Feynman
+diagrams give a simple visualization of what would otherwise be an arcane and abstract formula.
+[Ref. 4]
+
+The miracle of Feynman diagrams is that a simple set of rules allows us to easily find all of the
+important interactions. The first and most predictable powerful quantum field theory QED talks
+about the interaction of the electron field with the electromagnetic field. That means interactions
+between electrons their antimatter counterparts (the positron), and photons. In Feynman
+diagrams, we depict the electron as an Arrow pointing forwards in time or the positive point is an
+arrow pointing backwards in time. The photon is shown as a wavy line time, direction is
+irrelevant for the photon. Feynman plot his diagrams in space versus time. [Ref. 1]
+
+                    Figure 1.1 Feynman directions for QED particles [Ref. 1 PBS QFT]1
+
+1
+ "The Secrets of Feynman Diagrams | Season 3 Episode 11 | PBS ...." 26 Jul. 2017,
+https://www.pbs.org/video/the-secrets-of-feynman-diagrams-hserqq/..
+
+                                                   2
+None of these particles are doing anything with calculating. For this to be interesting, the electric
+and electromagnetic fields need to interact. This is where we start to see the power and simplicity
+of this approach. Particle slash field interactions are represented as a Vertex, a point where the
+lions representing the different particles come together. It turns out that there's only one vertex
+that's possible in Qed, one with an Arrow pointing in, an Arrow pointing out and a single photon
+connection. It looks like this. This vertex alone represents six very different seeming interactions
+and it can be used to construct infinite Feynman diagrams. Let's look at the possibilities oriented
+like this. With time increasing upwards, this vertex represents an initial electron that emits a
+photon after which both particles move off in opposite directions.
+
+           (a)                                  (b)                              (c)
+
+           (d)                                   (e)                             (e)
+
+Figure: 1.2 (a),(b),(c),(d),(e),(f) shows all different types of possible interactions in QED with one vertex
+      [Ref. 1 PBS QFT]
+
+But if we rotate figure: 1.2 (a) vertex so that photon is coming in from below, we have a picture
+in which an electron absorbs that incoming photon,the photon vanishes as it's momentum is
+completely transferred to the electron as shown in figure: 1.2 (b).Rotating figure: 1.2 (a) again,
+and the picture is of a photon coming in and giving up its energy to produce an electron-positron
+pair a process we call pair production shown in figure: 1.2 (c).Rotating again and now we have a
+
+                                                       3
+positron absorbing a photon shown in figure 1.2 (d).Rotating again, we have a positron emitting
+a photon as in Figure 1.2 (e) and finally gives an electron and a positron annihilating each other
+to produce a photon as shown by figure 1.2 (f) [Ref. 1]
+These are the possible ways that the electromagnetic and electron fields can interact. Every single
+QED interaction is built using these interactions, but why only this interaction? Because these follow
+some conservation laws.
+
+Energy and momentum conservation requires that particles not to vanish or appear from nothing,
+which guarantees that if something goes in and something else must come out. Other one is charge
+must also be conserved, if one electron or a positron goes in, then one electron or a positron
+respectively must leave, if an electron and a positron both go in, then their charges cancel so a zero
+charge photon must leave, similarly if a photon goes in it must creates a electron and positron
+pair.There are other more complex ways in which ingoing and outgoing particles can balance charge,
+but as we'll see, all of these can be built up from basic one vertex diagram.
+
+The another important rule is that overall interaction described by set of Feynman diagrams is
+defined by the particles going in and the particles going out, these are the particles do we actually
+measure, we know their properties, for example, their energy and momentum and they obey
+Einstein's mass energy equation. We say that these particles are on the mass shell or just “on Shell”.
+They sit on the shell structure you get when plot Einstein's equation of energy, momentum and mass.
+On the other hand, everything that happens between the ingoing and outgoing tracks has questionable
+reality. Each possible diagram that results in the same ingoing and outgoing particles is a valid
+part of the possibility space for that interaction. The particles that have their entire existence
+between vertices within the diagram, but don't enter all leave, are called virtual particles. They are
+also by definition unmeasurable, otherwise they'd be one of our ingoing or outgoing particles. These
+particles do not obey mass energy equivalence, so they are “off shell”. These particles aren't even
+limited by the speed of light or the direction of time, which leads to all sorts of fun. [Ref. 1]
+
+Part of the beauty of Feynman diagrams is that each of these diagrams themselves represents an
+infinite number of specific interactions to start with, each of the particle paths are actually
+infinite paths as well as infinite possibilities for particle momenta. We have to consider cases
+even faster than speed of light paths which is really important for any particle besides the ingoing
+and outgoing “on shell” particles any energy, speed and even direction in time is possible.
+
+For example, for two electrons exchanging a single photon, it doesn't matter if we draw the
+photon go from the first to the second or the second to the first. Even though this seems like a
+very different interaction, we can think of the differences just being the photon traveling forward
+
+                                                   4
+in time in one case and backwards in the other,the math describing the transfer covers both cases.
+[Ref. 1]
+
+          Figure 1.3 Backward and Forward direction of virtual particle(photon) [Ref. 1 PBS QFT]
+
+Let's look at an another example of this which is Compton scattering-an incoming electron and
+an incoming photon bounce off each other, one way that can happen is for the electron to emit a
+new photon and later absorb the old incoming in that intermediate stage between vertices the
+electron is a virtual particle(in fig (a) below) , which means we include all possible paths it might
+take as long as they lead to producing the same final electron and photon. That includes paths
+backwards in time. Mathematically, a time reversed electron looks exactly like a positron. The
+same particles go in and out, but now the interactions look very different(in fig (b) below)
+instead of an electron emitting and then absorbing a photon, we have on one side that incoming
+photon creating an electron positron pair, that new electron becomes outgoing electron, but the
+positron annihilates with the incoming electrons to produce the outgoing photon. [Ref. 1 PBS]
+
+                            (a)                                        (b)
+Figure: 1.4 Backward and Forward direction of virtual particle(electron in (a) and positron in (b)) [Ref. 1]
+
+                                                        5
+The above Feynman diagrams looks very different but the math for solving this is same for both.
+Therefore, how are the vertices connected to each other? This fact makes Feynman diagrams an
+incredibly powerful tool in simplifying quantum field theory calculations.
+
+            2. PHOTON PROPAGATOR
+Let us note that in the temporal gauge , if we define the two polarization vectors for λ = 1, 2 as
+four vectors
+
+                      µ
+                  ϵ (𝑘, λ) = (0, ϵ(𝑘, λ))                                                                                                                                  (2.1)
+
+the Feynman Green’s function has the form [Ref. 2]2
+
+                                                                      0                 0       (+)                                              0       0       (−)
+              𝐺𝐹,µν(𝑥 − 𝑦) =                     − θ(𝑥 − 𝑦 )𝐺µν (𝑥 − 𝑦) + θ(𝑦 − 𝑥 )𝐺µν (𝑥 − 𝑦).
+
+                                                              (                                                          )
+                                                                      2
+                                                       3                                                                                  0   0 −𝑖𝑘·(𝑥−𝑦)      0   0 𝑖𝑘·(𝑥−𝑦)
+                                  =
+                                       1
+                                      (2π)
+                                           4     ∫ 𝑑 𝑘 ∑ ϵµ(𝑘, λ)ϵν(𝑘, λ) *
+                                                                                                                                 (2π)
+                                                                                                                                     1
+                                                                                                                                      (θ(𝑥 − 𝑦 )𝑒
+                                                                                                                                             4            + θ(𝑦 − 𝑥 )𝑒       ).
+                                                                  λ=1
+
+                                                                      (                                                      )
+                                                                           2
+                                       3         𝑖𝑘·(𝑥−𝑦)                                                                                    0   0 −𝑖𝑘·(𝑥−𝑦)      0   0 𝑖𝑘·(𝑥−𝑦)
+                      =
+                          (2π)
+                              1
+                                  4 ∫𝑑 𝑘 𝑒                                 ∑ ϵµ(𝑘, λ)ϵν(𝑘, λ) *
+                                                                                                                                     2𝑘
+                                                                                                                                        (1
+                                                                                                                                          θ(𝑥 − 𝑦 )𝑒
+                                                                                                                                             0               + θ(𝑦 − 𝑥 )𝑒       ).
+                                                                          λ=1
+                                                                                                                                                                       (2.2)
+
+where we have changed k → −k in the second term and have used the fact that the polarization
+vectors are unaffected by this change of variables. To simplify this expression, we use the
+integral representation for the step function and write [Ref. 2]
+
+        0   0 −𝑖𝑘·(𝑥−𝑦)      0   0 𝑖𝑘·(𝑥−𝑦)
+2𝑘
+   (1
+     θ(𝑥 − 𝑦 )𝑒
+        0               + θ(𝑦 − 𝑥 )𝑒       )
+                                                              (                                                                              )
+                                                                            0       0       0   0                    0       0   0   0
+                                             0                        −𝑖(𝑘' +𝑘 )·(𝑥 −𝑦 )                        −𝑖(𝑘' −𝑘 )·(𝑥 −𝑦 )
+                                      𝑑𝑘'  1                      𝑒                                             𝑒
+              = lim               − ∫ 2π𝑖 0                                     0                       −                0
+               ϵ→0
+                    +                     2𝑘                               (𝑘' +𝑖ϵ )                                (𝑘' −𝑖ϵ )
+
+                                                 (                                  )
+                                                              0       0     0
+                                             0         −𝑖𝑘' ·(𝑥 −𝑦 )
+                                      𝑑𝑘'             𝑒
+              = lim               − ∫ 2π𝑖                 0 2          2
+                                                                                                                                                                            (2.3)
+                    +
+               ϵ→0                                   (𝑘' ) −𝑘 +𝑖ϵ
+
+2
+ "(PDF) [Ashok Das]Lectures on Quantum Field Theory .pdf | Zheng ...."
+https://www.academia.edu/32064405/_Ashok_Das_Lectures_on_Quantum_Field_Theory_.pdf.
+
+                                                                                                            6
+where we have used the Einstein relation. Substituting this into above equation and denoting the
+variable of integration k′ 0 → k0, we obtain [Ref. 2]
+
+                                                                                  (                     )
+                                                       4         −𝑖𝑘·(𝑥−𝑦)            2
+                                                   𝑑𝑘           𝑒
+          𝐺𝐹,µν(𝑥) = lim ∫     4                                      2               ∑ ϵµ(𝑘, λ)ϵν(𝑘, λ)                        (2.4)
+                     ϵ→0
+                        +  (2π)                                     𝑘 +𝑖ϵ         λ=1
+
+Therefore, we can identify the momentum space Feynman Green’s function for the Maxwell
+(photon) field to be [Ref. 2]
+
+                                                                          (                         )
+                                                                              2
+                                                            1
+          𝐺𝐹,µν(𝑥 − 𝑦) = lim 2                                                ∑ ϵµ(𝑘, λ)ϵν(𝑘, λ)
+                            + 𝑘 +𝑖ϵ
+                         ϵ→0                                              λ=1
+
+                                                       (                                      )
+                                                            2
+                                       = 𝐺𝐹(𝑘) ∑ ϵµ(𝑘, λ)ϵν(𝑘, λ)                                                              (2.5)
+                                                           λ=1
+
+where 𝐺𝐹(𝑘) denotes the Feynman Green’s function for a massless scalar field. The Feynman
+Green’s function in above equation depends on the polarization sum and to evaluate the
+polarization sum, let us note that if we introduce two new four vectors [Ref. 2]
+
+              µ
+          η           = (1, 0, 0, 0)
+              µ                µ           µ
+          𝑘           =
+                              𝑘 −(𝑘.η)η
+                                   2
+                               (𝑘.η) −𝑘
+                                           2
+                                               =   (0, )         𝑘
+                                                                |𝑘|
+                                                                                                                          (2.6)
+
+                  µ
+          µ
+then, η ,𝑘 and ϵµ(𝑘, λ), λ = 1, 2 define an orthonormal basis in four dimensions. Namely, they
+satisfy
+
+              µ
+          ϵ (𝑘, λ)ϵµ(𝑘, λ') =− δλλ',
+              µ
+          η ηµ = 1,
+              µ
+          𝑘 𝑘µ =               − 1,
+              µ                                µ
+          η ϵµ(𝑘, λ) = 0 = η 𝑘µ ,
+
+                                                                                          7
+             µ
+         𝑘 ϵµ(𝑘, λ) = 0.                                                                    (2.7)
+
+Consequently, we can write the completeness relation for these basis vectors as [Ref. 2]
+
+             2    ϵµ(𝑘, λ)ϵν(𝑘, λ)       ηµην         𝑘µ𝑘ν
+             ∑        σ              +    σ       +    σ       = ηµν,
+         λ=1 ϵ (𝑘, λ)ϵσ(𝑘, λ)            η ησ         𝑘 𝑘σ
+                  2
+or,     − ∑ ϵµ(𝑘, λ)ϵν(𝑘, λ) + ηµην − 𝑘µ𝑘ν = ηµν,
+                 λ=1
+                 2
+or,             ∑ ϵµ(𝑘, λ)ϵν(𝑘, λ) = − ηµν + ηµην − 𝑘µ𝑘ν                                       (2.8)
+             λ=1
+
+Substituting this back into our equation, we obtain the Feynman propagator for the photon field
+in the temporal gauge to be [Ref. 2]
+
+         − 𝑖𝐺𝐹,µν(𝑥 − 𝑦) = lim 2
+                           ϵ→0
+                              + 𝑘 +𝑖ϵ
+                                      ηµν − ηµην + 𝑘µ𝑘ν
+                                                           1
+                                                                (                   )             (2.9)
+
+The Feynman propagator has a non-covariant look in this gauge. However, physical calculations
+carried out with this propagator do lead to Lorentz covariant results. The Feynman propagator, in
+this gauge, is manifestly transverse , namely, [Ref. 2]
+
+             µ
+         𝑘 𝐺𝐹,µν(𝑘) = 0,                                                                   (2.10)
+
+and, as expected (since we are in the gauge A0 = 0), also satisfies [Ref. 2]
+
+         𝐺𝐹,0ν(𝑘) = 0                                                                     (2.11)
+
+Which follows from (2.6).
+
+       3. QUANTUM ELECTRODYNAMICS
+Quantum electrodynamics (QED) is the theory for describing the interaction of electron field
+with the electromagnetic field.
+
+                                                                        8
+The Lagrangian density for this theory is given by [Ref. 2]
+
+                       1            μν             μ
+         よ =     − 4 𝐹μν𝐹                 + 𝑖ψγ 𝐷μψ − 𝑚ψψ
+                                    μν             μ
+             =
+                       1
+                     − 4 𝐹μν𝐹                          (
+                                          + 𝑖ψγ ∂µ + 𝑖𝑒𝐴μ ψ − 𝑚ψψ   )
+             = よ0 + よ1                                                                 (3.1)
+Where,
+                       (
+         𝐷μψ(𝑥) = ∂µ + 𝑖𝑒𝐴μ ψ(𝑥)          )                                             (3.2)
+
+denotes the covariant derivative and wrote the Lagrangian density into two free and interaction
+part.
+                        1            μν
+         よ0 =        − 4 𝐹μν𝐹              + 𝑖ψðμψ − 𝑚ψψ
+                                μ
+         よ1 =        − 𝑒ψγ ψ𝐴μ                                                          (3.3)
+
+Let’s check the Lagrangian density is invariant under finite local gauge transformations [Ref. 2]
+
+                                          −𝑖θ(𝑥)
+         ψ(𝑥) → ψ′(𝑥) = 𝑒                       ψ(𝑥),
+                                                𝑖θ(𝑥)
+         ψ(𝑥) → ψ'(𝑥) = ψ(𝑥)𝑒                          ,
+                                                        1
+         𝐴μ(𝑥) → 𝐴'μ(𝑥) = 𝐴μ(𝑥) + 𝑒 ∂µθ(𝑥),                                               (3.4)
+
+where θ(x) is the real and finite local parameter of transformation or under the infinitesimal form
+of the transformation [Ref. 2]
+
+         δ𝑒ψ(𝑥) → ψ′(𝑥) − ψ(𝑥) = 𝑖ϵ(𝑥)ψ(𝑥),
+
+         δ𝑒ψ(𝑥) → ψ'(𝑥) − ψ(𝑥) = 𝑖ψ(𝑥)ϵ(𝑥) ,
+                                                            1
+         δ𝑒𝐴 (𝑥) → 𝐴'μ(𝑥) − 𝐴μ(𝑥) = 𝑒 ∂µϵ(𝑥),                                             (3.5)
+             μ
+
+where Є(x) denotes the infinitesimal local parameter of transformation. In fact, in (3.4) (or (3.5))
+we have already seen that the Lagrangian density for the Maxwell theory is invariant under the
+gauge transformation.
+
+                                                                    9
+Now we need to check the invariance of the minimally coupled Dirac Lagrangian density in
+(3.1). First, let us note that the covariant derivative in (3.2) transforms covariantly under gauge
+transformation.[Ref. 2]
+
+       𝐷μψ(𝑥) → 𝐷'μψ'(𝑥)
+                   (
+               = ∂µ + 𝑖𝑒𝐴μ ψ(𝑥)      )
+                       −𝑖θ(𝑥)
+               =𝑒              (∂µ + 𝑖𝑒𝐴μ(𝑥))ψ(𝑥) = 𝑒−𝑖θ(𝑥)𝐷μψ(𝑥)                          (3.6)
+
+Therefore, the minimally coupled Dirac Lagrangian density transforms under a (finite) gauge
+transformation,as [Ref. 2]
+
+       よ𝐷𝑖𝑟𝑎𝑐(ψ, ψ,𝐴μ) → よ𝐷𝑖𝑟𝑎𝑐(ψ', ψ',𝐴'μ)
+                          μ
+               = 𝑖ψ'γ 𝐷'μψ' − 𝑚ψ'ψ'
+                          𝑖θ(𝑥) μ −𝑖θ(𝑥)                𝑖θ(𝑥) −𝑖θ(𝑥)
+               = 𝑖ψ𝑒            γ𝑒           𝐷μψ − 𝑚ψ𝑒      𝑒      ψ
+                          μ
+               = 𝑖ψγ 𝐷μψ − 𝑚ψψ = よ𝐷𝑖𝑟𝑎𝑐(ψ, ψ,𝐴μ)
+               (3.7)
+
+Namely, the minimally coupled Dirac Lagrangian density is also invariant under the gauge
+transformation (3.5) and, therefore, the complete QED Lagrangian density (3.1) is gauge
+invariant. Thus we have a conserved current, [Ref. 2]
+
+                          μ              μ
+       𝐽µ(𝑥) = 𝑖ψγ ψ ,               ∂μ𝐽 (𝑥) = 0.                                        (3.8)
+
+In momentum space the current conservation takes the form
+
+           μ
+       𝑘μ𝐽 (𝑘) = 0.                                                                  (3.9)
+
+The Feynman rules for QED can be derived in the standard manner. We have already derived the
+fermion propagator as well as the fermion external line factors .In addition, in QED we have the
+photon propagator as well as the photon external line factor which take the forms, [Ref. 2]
+
+                                                       10
+                      = 𝑖𝐺𝐹,µν(𝑘)
+
+                       = lim 2
+                          ϵ→0
+                             + 𝑘 +𝑖ϵ
+                                    1
+                                            (
+                                     ηµν − ηµην + 𝑘µ𝑘ν                )                             (3.10)
+
+                                                        1
+                                                =         3       0
+                                                                        ϵµ(𝑘, λ)                                         (3.11)
+                                                      (2π) 2𝑘
+
+Here we have chosen a real polarization vector so that the external line in (3.11) can represent
+both the annihilation as well as the creation of a photon. We note here that the photon propagator
+is a gauge dependent quantity.
+The interaction vertex for QED can also be read out from the Lagrangian density (3.1) [Ref. 2]
+
+        4. SCATTERING MATRIX
+Feynman developed a graphical method for evaluating S matrix elements. It contains terms with
+number of propagators normalization factors as well as spinor functions for the particles in the
+initial and the final states.
+Let us introduce a graphical representation for these two basic elements of Wick’s expansion.
+[Ref. 2]
+
+                                                                                𝑖
+             - - - - - - - -          = 𝑖𝐺𝐹(𝑘) = lim 2 2
+                                                      + 𝑘 −𝑀 +𝑖ϵ
+                                                   ϵ→0
+                       𝑘
+                                                                                          𝑖(Ќ+𝑚)
+                                             = 𝑖𝑆𝐹,αβ(𝑘) = lim 2 2 αβ
+                                                                   + 𝑘 −𝑀 +𝑖ϵ
+                                                                ϵ→0
+(4.1)
+                                                  = lim
+                                                     ϵ→0
+                                                        +
+                                                                (      𝑖
+                                                                    (𝑘−𝑚+𝑖ϵ)        )
+                                                                                    αβ
+
+                                                  (4.2)
+
+                                                                11
+(4.1) is for the scalar Feynman propagator represents with no direction and, in (4.2) the line is
+representing the fermion propagator has a direction associated with it, going from from ψβ to ψα.
+
+The fermion field carries a charge (and, therefore, carries a direction for charge flow), a fermion
+external line with an arrow flowing into an interaction point (vertex) can represent either the
+annihilation of a particle or the creation of an antiparticle at that point and the external line
+factor, in such a case is given by [Ref. 2]
+
+                                            𝑚
+                                  =             3       0
+                                                            𝑢α(𝑘, 𝑠)           (particle annihilation)
+                                          (2π) 2𝑘
+
+                                            𝑚
+                                  =             3       0
+                                                            𝑣α(𝑘, 𝑠)            (antiparticle creation) (4.3)
+                                          (2π) 2𝑘
+
+                                            𝑚
+                                  =             3       0
+                                                            𝑢α(𝑘, 𝑠)            (particle creation)      (4.4)
+                                          (2π) 2𝑘
+
+                                            𝑚
+                                  =             3       0
+                                                            𝑣α(𝑘, 𝑠)            (antiparticle annihilation)
+                                          (2π) 2𝑘
+
+Actually, it is the interaction between the different fields which gives nontrivial scattering. The
+interaction can be read out from the Lagrangian density よ1 (3.3) and, in a local quantum field
+theory, is represented as a vertex. [Ref. 2]
+
+                                                                                                         (4.5)
+
+With these rules, we can now calculate the S-matrix elements for various physical processes in
+QED.
+
+                                                            12
+    4.1.Photon pair production
+Let us calculate the S matrix element for an electron and a positron to annihilate and produce a
+pair of photons
+
+            −       +
+       𝑒 (𝑘1) + 𝑒 (𝑘2) → γ(𝑘3) + γ(𝑘4).
+(4.6)
+
+The S-matrix element for this process can be worked out to be (we are assuming that the final
+state photons are outgoing and have carried out the momentum integration for the internal line
+and are omitting the overall energy-momentum conserving delta function δ4(k1 + k2 − k3 − k4))
+[Ref. 2]
+
+       Figure 4.1: Lowest order Feynman Diagram for two photon production [Ref. 2]
+
+                                                   13
+                       (4.7)
+
+Where         K = K1-K3                = 𝑘1 − 𝑘4,                                    (4.8)
+
+    4.2.Compton scattering
+
+The scattering of a incoming photon with a incoming electron is given by compton scattering.
+
+            −                 −
+        𝑒 (𝑘1) + γ(𝑘2) → 𝑒 (𝑘3) + γ(𝑘4).
+(4.9)
+
+The Feynman diagrams for compton scattering will be same diagrams as of above photon pair
+scattering except for the labeling of the momenta. In this case, we will assume the final state
+electron and photon (e−(k3), γ(k4)) to be outgoing. Instead of an electron and a positron being
+annihilated as was the case in (4.7), here we have the annihilation of an electron with momentum
+k1 and the creation of an electron with momentum k3. Therefore, we can obtain the S-matrix
+element for Compton scattering directly from the above results to be [Ref. 2]
+
+                                                                                         (4.10)
+
+                                                  14
+where as defined in (4.8)      = k1 − k4 and we have introduced Q = k1 + k2.
+
+    4.3.Möller scattering
+
+Moller scattering is for the scattering of two electrons
+
+      Figure 4.2: Lowest order Feynman Diagram for two electron scattering [Ref. 2]
+
+           −        −          −           −
+       𝑒 (𝑘1) + 𝑒 (𝑘2) → 𝑒 (𝑘3) + 𝑒 (𝑘4).                                              (4.11)
+
+                                                                                           (4.12)
+
+                                                   15
+    4.4.Bhabha scattering
+
+       Figure 4.3: Lowest order Feynman Diagrams for electron and positron scattering[Ref. 2]
+
+           −        +          −            +
+       𝑒 (𝑘1) + 𝑒 (𝑘2) → 𝑒 (𝑘3) + 𝑒 (𝑘4).                                                   (4.13)
+
+Here in the first diagram the annihilation of an electron and a positron creating a photon which
+then creates an electron and a positron pair. In the second diagram the scattering of an electron
+and a positron is shown with the exchange of a photon. The scattering S matrix for this
+interaction can be calculated as[Ref. 2]
+
+                                                                                                  (4.14)
+
+                                                    16
+     5. WARD-TAKAHASHI IDENTITY IN QED
+This identity implies that there exists a relation between the fermion two point function
+(self-energy) and the vertex function in QED and the relation can be traced to the gauge
+invariance of the theory.
+Lagrangian density for QED [Ref. 2]
+
+                  1       μν        μ
+       よ =    − 4 𝐹μν𝐹        + 𝑖ψγ 𝐷μψ − 𝑚ψψ                                   (5.1)
+
+let us note that the fermion propagator in QED can be represented as
+
+ ∴
+
+                                                          where Гμ(p,−p, 0) denotes the three
+point                                                     vertex (4.5) in QED with a zero
+                                                                       4
+momentum photon (without the delta function and the factor of (2π) .
+
+                                                17
+    6.   REGULARIZATION OF FEYNMAN DIAGRAMS
+At the loop level to evaluate scattering amplitudes as we invariably run into divergences.
+Therefore, integrals over the any loop momenta may not be convergent so to make Feynman
+amplitudes meaningful we use regularization of feynman diagrams.
+
+        6.1. Dimensional Regularization
+From the analysis of the divergence structure of amplitudes in the last two sections it is clear that
+the divergences are functions of the dimension of space time. For example, the integral [Ref. 2]
+
+                               4
+                           𝑑𝑘
+         ∫    2       2               2        2                                                (6.1)
+              (𝑘 −𝑚 )((𝑘+𝑝) −𝑀 )
+
+is logarithmically divergent in four dimensions. However, in less than four dimensions it is finite.
+Therefore we can use it in regularizing Feynman integrals which is known as dimensional
+regularization. Also, as we know gauge invariance is independent of the number of space time
+dimensions, so it is by construction a gauge invariant regularization method.
+
+      6.1.1. Calculations in QED
+Let us calculate one loop amplitudes in QED
+
+                           1               μν                    μ
+          よ =      − 4 𝐹μν𝐹                         + 𝑖ψγ 𝐷μψ − 𝑚ψψ                                 (6.2)
+
+In n dimensions, the canonical dimensions of various fields can be determined to be (we are
+assuming n = 4 − ∈) [Ref. 2]
+
+                       𝑛−2                               ϵ
+          [𝐴μ] =        2
+                                   = 1 − 2,
+                                       𝑛 −1                  3           ϵ
+          [ψ] = [ψ] =                    2
+                                                =            2
+                                                                 − 2,
+                   ϵ
+          [ψ] = 2                                                                               (6.3)
+
+To make this coupling constant dimensionless, we let
+
+                   ϵ
+
+         𝑒 → 𝑒 μ 2 ,                                                                           (6.4)
+
+                                                                                 18
+where μ is an arbitrary mass parameter such that covariant derivative will take the form
+
+                   (               )
+                               ϵ
+
+      𝐷μψ(𝑥) = ∂µ + 𝑖𝑒 μ 2 𝐴μ ψ(𝑥)                                                      (6.5)
+
+As a result, the Feynman rules of the theory in n = 4−∈ dimensions are given by [Ref. 2]
+
+                                                                                              (6.6)
+
+                                                                                              (6.7)
+
+                                                                                              (6.8)
+
+Using these Feynman rules, the fermion self-energy at one loop level is given by [Ref. 2]
+
+                                                                                         (6.9)
+
+                                                 19
+We note here that if we use the algebra of the gamma matrices in n dimensions as well as
+    μ
+ημ = 𝑛 we obtain
+
+             µ
+       γμγ = 𝑛
+                                             µ
+       γμ                                   γ = (2 − 𝑛)
+       (6.10)
+
+Using this, the one loop fermion self energy in takes the form [Ref. 2]
+
+                               𝑛              µ
+                     2 ϵ   𝑑 𝑘         (2−𝑛)γ (𝑘+𝑝)+𝑛𝑚
+       =    −𝑒 µ ∫                𝑛     2            2       2
+                           (2π)        (𝑘 )((𝑘+𝑝) −𝑚 )
+
+                      2                                                          2           2
+                                                  µ
+        ≃    −
+                 𝑖𝑒
+                 8π
+                               (
+                      2 ∫ 𝑑𝑥 (1 − 𝑥)γ 𝑝 + 2𝑚 ( ϵ − ㏑              ) 2          𝑥𝑚 −𝑥(1−𝑥)𝑝
+                                                                                     4πµ
+                                                                                         2           − γ − 1)
+
+       (6.11)
+
+where we have defined Q2 = −x(1−x)p2+xm2 [Ref. 2]
+Similarly the photon self energy at one loop can also be calculated as (the overall negative sign is
+because of the fermion loop) [Ref. 2]
+
+                                                                                                                       (6.12)
+
+Using the n-dimensional identities ,the photon self-energy becomes [Ref. 2]
+
+                                                                      20
+                                                                                            µ                      2
+                     2 ϵ        𝑑 𝑘
+                                    𝑛           𝑘μ(𝑘+𝑝)ν−ημν𝑘.(𝑘+𝑝)+ γ (𝑘+𝑝)+𝑘ν(𝑘+𝑝)µ+𝑚 ημν
+        =   −𝑒 µ ∫                     𝑛
+                                (2π)                                       (𝑘2−𝑚2)((𝑘+𝑝)2 −𝑚2)
+
+                                    (                                                                                          )
+                      2
+                 𝑖𝑒                                                           2             2
+         ≃   −        2   ∫ 𝑑𝑥 ημν(𝑥(1 − 𝑥) 𝑝 + 𝑚 ) − 2𝑥(1 − 𝑥)𝑝μ𝑝ν
+                 8π
+
+(6.13)
+                                                                                    2
+                                2                1                                𝑄
+                              * (ϵ − 2 − γ − ㏑                                          2   )
+                                                                                  4πµ
+
+                                                                                                                       𝑛
+
+                                    𝑛                              2                                             (π) 2             1            ϵ
+where we took Γ(2 −                 2
+                                      )≃                      −    ϵ
+                                                                       + (γ + 1) as well as                            𝑛   ≃           2   (1 + 2 ㏑4π). Let us
+                                                                                                                 (2π)          16π
+next look at the terms with kμkν in the numerator separately which gives us [Ref. 2]
+
+                     2 ϵ
+                                             𝑛
+                                            𝑑 𝑘                2𝑘μ𝑘ν
+        =   − 𝑒 µ ∫ 𝑑𝑥                           𝑛            2   2 2
+                                        (2π)              (𝑘 −𝑄 )
+                      2
+                                                                                   2             2
+         ≃   −
+                 𝑖𝑒
+                 8π
+                      2                      (
+                          ημν ∫ 𝑑𝑥 − 𝑥(1 − 𝑥) 𝑝 + 𝑚                                                  )
+                                        2
+                 2                      𝑄                              1
+             * (ϵ + ㏑                       2     + γ − 2 )
+                                    4πµ
+(6.14)
+
+Similarly, the term with k2 in the numerator leads to
+
+                                                                       2
+                     2 ϵ
+                                             𝑛
+                                            𝑑 𝑘               −2ημν𝑘
+        =   − 𝑒 µ ∫ 𝑑𝑥                           𝑛            2   2 2
+                                        (2π)              (𝑘 −𝑄 )
+                      2
+                                                                                   2             2
+         ≃   −
+                 𝑖𝑒
+                 8π
+                      2                      (
+                          ημν ∫ 𝑑𝑥 − 𝑥(1 − 𝑥) 𝑝 + 𝑚                                                  )
+                                                      2
+                          4                      𝑄
+             * (− ϵ + 2㏑                                  2    + 2γ)
+                                                 4πµ
+(6.15)
+
+Adding the contributions from (6.13)-(6.15), the photon self energy takes the final form [Ref. 2]
+
+                                                                                                21
+                     2                                                              2
+                                   2
+        =   −
+                 𝑖𝑒
+                 8π
+                      2                               (
+                          (ημν𝑝 − 𝑝μ𝑝ν) ∫ 𝑑𝑥 𝑥(1 − 𝑥) ( ϵ − ㏑           ) 2       𝑄
+                                                                                  4πµ
+                                                                                        2
+                                                                                                         1
+                                                                                                − γ − 2 )
+
+(6.16)
+
+This shows that the photon self energy graph is completely transverse which is consistent with
+gauge invariance. The photon does not acquire a mass term this result holds in any covariant
+gauge with the gauge fixing term ξ arbitrary.
+
+    7. RENORMALIZATION THEORY
+As we saw above, loop diagrams become divergent and need to be regularized. After that, we
+have also seen that since Feynman amplitudes are analytic functions of external momenta, we
+can expand them around some reference momentum value to regularize them (for massive
+theories conventionally chosen to be zero). Further we need to define a method for determining
+which Feynman diagrams will be divergent as well as the nature of the divergence (without
+actually evaluating the integrals), which achieved through the notion of the superficial degree of
+divergence of a graph.
+Let us start with the Lagrangian density for a given theory [Ref. 2]
+
+         𝐿 = 𝐿0 + ∑ 𝐿𝑖                                                                                      (7.1)
+                           𝑖
+
+where, L0 : sum of the free Lagrangian densities for all the field variables in the theory
+       Li : representing some interaction is a basic field variables and derivatives.
+
+For action to be dimensionless the Lagrangian density must have canonical dimension 4 in these
+units. Now let us introduce the notations fi, bi and di for denoting the number of fermions,
+bosons and derivatives at an interaction vertex.
+For example, the interaction of the form
+
+                               μ                          μν
+         𝐿 = ℎψγμψ∂ φ                      or,       𝑘ψσ ψ𝐹μν                                                  (7.2)
+
+                                                                   22
+We have,
+
+        𝑓 = 2, 𝑏 = 1, 𝑑 = 1,
+
+With these notations we are now ready to introduce the notion of the superficial degree of
+divergence of a Feynman graph. This is defined to be the difference between the number of
+momenta in the numerator arising from the loop integrations as well as derivative couplings and
+the number of momenta in the denominator arising from the propagators. [Ref. 2]
+
+    Figure 7.1: superficial degree of divergences for different Feynman diagrams [Ref. 2]
+
+If D < 0 , then the Feynman diagram is called superficially convergent. The meaning of
+“superficial” becomes clear when we look at the last graph. As the graph seems superficially
+convergent, but actually is divergent since it contains a subgraph which is divergent.
+
+                                                     23
+For calculating the superficial degree of divergence for any graph, let us develop a general
+formula for the superficial degree of divergence of any connected Feynman graph.[Ref. 2]
+
+         B = number of external bosons lines,
+         IB = number of internal boson lines,
+          F = number of external fermion lines,
+          IF = number of internal fermion lines,
+          ni = number of vertices of the ith type from Li.
+
+Since a vertex of Li has bi boson lines attached to it and since each of these lines can become
+either an external boson line or an internal boson line we must have [Ref. 2]
+
+        𝐵 + 2𝐼𝐵 = ∑ 𝑛𝑖𝑏𝑖                                                           (7.3)
+                        𝑖
+The factor 2IB reflects the fact that it takes two boson lines at two different vertices to form a
+propagator (internal boson line). Similarly, we have
+
+        𝐹 + 2𝐼𝐹 = ∑ 𝑛𝑖𝑓𝑖                                                           (7.4)
+                        𝑖
+The superficial degree of divergence is easily seen to be given by [Ref. 2]
+
+        𝐷 = ∑ 𝑛𝑖𝑑𝑖 + 2𝐼𝐵 + 3𝐼𝐹 − 4 ∑ 𝑛𝑖 + 4
+                𝑖                                   𝑖
+(7.5)
+The first term simply says that each derivative at a vertex gives rise to a momentum in the
+numerator and if there are no vertices of the ith type in a graph, this would lead to a power of
+momentum in the numerator nidi (which must be summed over all possible types of vertices).
+With each internal boson line is associated a momentum integration and a propagator.
+                                                    3            3
+         𝐷 = ∑ 𝑛𝑖𝑑𝑖 + ∑ 𝑛𝑖𝑏𝑖 − 𝐵 + 2 ∑ 𝑛𝑖𝑓𝑖 − 2 𝐹 + 2𝐼𝐵 + 3𝐼𝐹 − 4 ∑ 𝑛𝑖 + 4
+                𝑖           𝑖                           𝑖                        𝑖
+
+                                3
+             = 4 − 𝐵 − 2 𝐹 + ∑ 𝑛𝑖δ𝑖
+                                            𝑖
+(7.6)
+                                    3
+Where,       δ𝑖 = 𝑏𝑖 + 𝑑𝑖 + 2 𝑓𝑖 − 4                                                 (7.7)
+
+                                                                24
+This is known as the index of divergence of the interaction Lagrangian density Li and can also be
+expressed as
+
+       δ𝑖 = 𝑑𝑖𝑚𝐿𝑖 − 4                                                          (7.8)
+
+Important point is dimLi is calculated only from the dimensions of the field variables and
+derivatives not from any dimensionful parameters so, in all theories we consider the interaction
+Lagrangian density has dimension 4 and hence δ𝑖 = 0 [Ref. 2]
+
+                          3
+∴     𝐷 = 4 − 𝐵 − 2 𝐹                                                          (7.9)
+
+Let us now look at QED ,
+
+                  1       μν         μ
+       よ =     − 4 𝐹μν𝐹        + 𝑖ψγ 𝐷μψ − 𝑚ψψ                                     (7.10)
+
+             Table 7.1 :Superficial Degree of divergence in QED [Ref. 2]
+
+Here the 0 point graphs are neglected because they can be taken care of by normal ordering. The
+1 point boson graphs also do not exist as they violate Lorentz invariance as well as gauge
+invariance. Similarly the 3 point boson graphs also do not exist. (Vanishing of photon graphs
+with an odd number of photons is a consequence of the symmetry of charge conjugation). [Ref. 2]
+
+                                                   25
+In multiplicative renormalization, we calculate 1 vertex Feynman amplitudes in perturbation
+theory until we encounter a divergent graph. The amplitude is then regularized with a cut off
+momentum. The regularized amplitude is then expanded as Taylor series about zero external
+momenta (for massive theories) to separate out the local divergent parts. We then add counter
+terms to the Lagrangian density to exactly cancel all the divergences. This method makes theory
+finite.
+
+                                         CONCLUSION
+The equations of quantum field theory allow us to calculate the behavior of subatomic particles
+by expressing them as vibrations in quantum fields. In this project we saw that how Feynman
+rules are used to observe different types of scattering with their most probable Feynman
+diagrams and to calculate their S matrix. After that, regularization method is used to resolve the
+divergences that appear in the Feynman diagrams which, in turn, gives them a senseful meaning.
+We further determine that which of the Feynman diagram in a theory will be divergent (without
+actually evaluating the integrals) using the notion of the superficial degree of divergence of a
+graph in theory of Renormalization.
+
+                                                 26
+REFERENCES
+    1. PBS Space Time | PBS, https://www.pbs.org/show/pbs-space-time/.
+    2. Ashok Das: Lectures on Quantum Field Theory,World Scientific Publishing Co. Pte. Ltd,
+        2008
+    3. Peskin and Schroeder: An introduction To Quantum Field Theory, Perseus Books, 1995
+    4. Feynman diagram - Wikipedia, https://en.wikipedia.org/wiki/Feynman_diagram.
+    5. Steven Weinberg: The Quantum Theory of Fields, the Press Syndicate of the University
+        of Cambridge, volume 1, 1995
+
+                                               27
+

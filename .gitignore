@@ -1,0 +1,4 @@
+build/graph_work/
+__pycache__/
+.venv/
+node_modules/

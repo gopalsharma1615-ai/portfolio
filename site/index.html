@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gopal Sharma · Graph RAG</title>
+  <meta name="description" content="Gopal Sharma, Senior Data Scientist: RAG, GraphRAG and LLM systems, M.Sc. Physics. Ask a live knowledge graph of his work and watch a meet-in-the-middle search find the top-5 evidence paths.">
+  <meta property="og:title" content="Gopal Sharma · Graph RAG">
+  <meta property="og:description" content="Ask my knowledge graph: watch a bidirectional graph search find evidence paths, in your browser.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='8' cy='24' r='4' fill='%232a78d6'/%3E%3Ccircle cx='24' cy='8' r='4' fill='%23eb6834'/%3E%3Ccircle cx='24' cy='24' r='3' fill='%231baf7a'/%3E%3Cpath d='M8 24 L24 8 M24 8 L24 24' stroke='%23888' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#demo">Skip to the graph demo</a>
+<header class="top">
+  <a class="brand" href="#">Gopal Sharma</a>
+  <nav aria-label="Sections">
+    <a href="#demo">Graph demo</a><a href="#projects">Projects</a><a href="#experience">Experience</a>
+    <a href="#physics">Physics</a><a href="#contact">Contact</a>
+  </nav>
+  <button class="theme" id="theme" type="button" aria-label="Toggle dark mode">◐</button>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-text">
+    <p class="eyebrow">Senior Data Scientist · RAG · GraphRAG · LLM systems</p>
+    <h1>From renormalization<br>to <em>retrieval</em>.</h1>
+    <p class="lede">I trained as a physicist and now build retrieval systems that <strong>walk knowledge graphs</strong>
+      to answer questions single-shot search can't reach, and measure every step. The graph below holds my
+      projects, my work and my M.Sc. thesis. Ask it something.</p>
+    <div class="cta">
+      <a class="btn primary" href="#demo">Ask my knowledge graph</a>
+      <a class="btn" href="https://github.com/gopalsharma1615-ai" rel="noopener">GitHub</a>
+      <a class="btn" href="assets/Gopal_Sharma_Resume.pdf">Résumé (PDF)</a>
+    </div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 320 240" role="img" aria-label="A Feynman diagram whose propagators become the edges of a graph">
+    <g class="prop"><path d="M20 40 L110 120 L20 200"/><path class="wavy" d="M110 120 q10 -12 20 0 t20 0 t20 0 t20 0 t20 0"/>
+      <path d="M210 120 L300 40 M210 120 L300 200"/></g>
+    <g class="nodes"><circle cx="20" cy="40" r="7" class="c1"/><circle cx="20" cy="200" r="7" class="c1"/>
+      <circle cx="110" cy="120" r="9" class="c2"/><circle cx="210" cy="120" r="9" class="c3"/>
+      <circle cx="300" cy="40" r="7" class="c5"/><circle cx="300" cy="200" r="7" class="c4"/></g>
+    <circle class="pulse" r="5" cx="20" cy="40"/>
+  </svg>
+</section>
+
+<section class="stats" aria-label="Headline results">
+  <div class="stat"><b>47 → 53%</b><span>multi-hop QA accuracy with bidirectional graph search</span></div>
+  <div class="stat"><b>70.2 → 76.9%</b><span>with a single-first router that decomposes only 18% of questions</span></div>
+  <div class="stat"><b>≈200×</b><span>fewer candidate paths, with gold-path recall 100% vs 88.6%</span></div>
+  <div class="stat"><b>$2.03</b><span>per 1,000 pages to build a 46k-entity regulatory graph</span></div>
+  <div class="stat"><b>85.5%</b><span>page hit@5 on OHR-Bench from raw PDFs, CPU-only, no LLM</span></div>
+</section>
+
+<section id="demo" class="demo">
+  <div class="section-head">
+    <p class="eyebrow">Live demo · runs entirely in your browser</p>
+    <h2>Ask my knowledge graph</h2>
+    <p class="muted" id="graph-meta">Loading graph…</p>
+  </div>
+
+  <form class="ask" id="ask" autocomplete="off">
+    <label for="q" class="sr">Your question</label>
+    <input id="q" name="q" type="text" placeholder="e.g. What did Gopal build with Neo4j?" maxlength="200">
+    <button class="btn primary" type="submit" id="go">Walk the graph</button>
+  </form>
+  <div class="chips" id="chips" aria-label="Example questions"></div>
+  <p class="status" id="status" role="status" aria-live="polite"></p>
+
+  <div class="demo-grid">
+    <ol class="steps" id="steps" aria-label="Search steps">
+      <li data-step="1"><span class="dot"></span><div><b>Anchor</b><p>Find the things your question names: by name, then by meaning.</p><em class="n" id="n1"></em></div></li>
+      <li data-step="2"><span class="dot"></span><div><b>Answer candidates</b><p>Only nodes reachable from the anchors, ranked by relevance, per distance.</p><em class="n" id="n2"></em></div></li>
+      <li data-step="3"><span class="dot"></span><div><b>Meet in the middle</b><p>Grow half-paths forward from anchors and backward from answers, then join them where they meet.</p><em class="n" id="n3"></em></div></li>
+      <li data-step="4"><span class="dot"></span><div><b>Rank</b><p>Score each path by how well its relations match the question; keep the top 5 with distinct endpoints.</p><em class="n" id="n4"></em></div></li>
+    </ol>
+    <div class="canvas-wrap">
+      <div id="cy" class="cy" aria-label="Knowledge graph visualization"></div>
+      <ul class="legend" id="legend" aria-label="Node types"></ul>
+      <div class="canvas-tools">
+        <button class="btn small" type="button" id="replay" disabled>Replay</button>
+        <button class="btn small" type="button" id="fit">Fit</button>
+        <button class="btn small" type="button" id="listview" aria-expanded="false">List view</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="paths" id="paths" aria-live="polite"></div>
+  <div class="listview" id="nodelist" hidden></div>
+
+  <details class="how">
+    <summary>Why meet in the middle?</summary>
+    <p>Multi-hop questions fail single-shot retrieval because the answer sits several relations away from what the
+      question names, and isn't textually similar to it. Enumerating every walk from the anchor explodes (thousands
+      of paths at 5–7 hops) and drowns the right one. Searching from both ends only ever builds paths that connect
+      an anchor to a plausible answer. On a 52,474-node graph this kept gold-path recall at 100% (vs 88.6%) with
+      about 200× fewer candidates. The full method, with tests proving it equals brute force, is in
+      <a href="https://github.com/gopalsharma1615-ai/graphwalk-rag">graphwalk-rag</a>.</p>
+  </details>
+</section>
+
+<section id="projects">
+  <div class="section-head"><p class="eyebrow">Open source</p><h2>Projects</h2></div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section id="experience">
+  <div class="section-head"><p class="eyebrow">4+ years · 3 in production GenAI</p><h2>Experience</h2></div>
+  <ol class="timeline">
+    <li><div class="when">Oct 2025 – now</div><div><h3>Senior Data Scientist · Newgen Software</h3>
+      <ul><li>Bidirectional graph search for multi-hop QA over a 52k-node knowledge graph: 47% → 53% accuracy, correct-path selection 39% → 72–84%.</li>
+        <li>Single-first query router: 70.2% → 76.9% on 952 questions, with decomposition on only 18% of them.</li>
+        <li>Layered graph over 371 regulatory documents (17k pages) for $35.1; on-prem Qwen3 + vLLM rebuild matched the cloud graph; Neo4j migration reproduced 25/25 results.</li>
+        <li>Async inference platform (FastAPI, Celery, Redis): 7 NLP models at ~8,400 emails/hour/node, 28 models preloaded past the GIL.</li></ul></div></li>
+    <li><div class="when">Oct 2023 – Oct 2025</div><div><h3>Data Scientist · Newgen Software</h3>
+      <ul><li>LLM guardrails: 25+ parallel scanners (injection, PII, toxicity, hallucination) in 1–2 s across 22 languages.</li>
+        <li>Llama-3 distillation for text-to-SQL; evaluated 8+ compression methods (QLoRA, AWQ, GPTQ …).</li></ul></div></li>
+    <li><div class="when">Jul 2022 – Aug 2023</div><div><h3>Data Scientist · Number Theory</h3>
+      <ul><li>143-function feature library and PySpark models for a 5-product loan-risk scorecard.</li></ul></div></li>
+  </ol>
+</section>
+
+<section id="physics" class="physics">
+  <div class="section-head"><p class="eyebrow">M.Sc. Physics · NIT Calicut · CSIR-UGC NET AIR 81</p><h2>Physics, done by code</h2></div>
+  <div class="phys-grid">
+    <div>
+      <p>My M.Sc. project was the renormalization of quantum electrodynamics. In
+        <a href="https://github.com/gopalsharma1615-ai/qft-renorm-ai">qft-renorm-ai</a> the code derives it from the
+        Feynman rules in <i>n</i> = 4 − ε: gauge-invariant vacuum polarization, the Ward identity
+        <i>Z</i><sub>1</sub> = <i>Z</i><sub>2</sub>, and β(<i>e</i>) = <i>e</i>³/12π², with tests checking each result.</p>
+      <p>Then an AI experiment: sparse regression on the renormalization-group equation, fed noisy α<sub>s</sub>(Q)
+        data, rediscovers β<sub>0</sub> = 11 − 2<i>n</i><sub>f</sub>/3 and places the loss of asymptotic freedom at
+        <i>n</i><sub>f</sub> ≈ 16.3 (theory: 16.5). It recovers the two-loop term only when the regression is given
+        the form physics predicts. AI discovery needs the right inductive bias.</p>
+    </div>
+    <figure><img src="assets/beta0_vs_nf.png" alt="Recovered beta0 versus number of flavours, lying on the line 11 - 2nf/3" loading="lazy" width="600" height="400">
+      <figcaption>β₀ recovered from noisy coupling data (points) vs theory (line).</figcaption></figure>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div><h2>Let's talk</h2><p class="muted">Open to Senior / Staff Data Scientist and Applied Scientist roles in retrieval, LLM systems and graph ML.</p></div>
+  <div class="links">
+    <a href="mailto:gopalsharma.1615@gmail.com">gopalsharma.1615@gmail.com</a>
+    <a href="https://www.linkedin.com/in/gopal-sharma-943012145" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/gopalsharma1615-ai" rel="noopener">GitHub</a>
+    <a href="assets/Gopal_Sharma_Resume.pdf">Résumé</a>
+  </div>
+  <p class="fine muted">The demo runs on your device: an in-browser embedding model plus the search in plain JavaScript. Nothing you type leaves your browser.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.2/cytoscape.min.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
