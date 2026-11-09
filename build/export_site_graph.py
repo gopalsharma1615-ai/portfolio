@@ -13,6 +13,7 @@ import argparse
 import base64
 import datetime as dt
 import json
+import re
 from pathlib import Path
 
 import numpy as np
@@ -129,6 +130,16 @@ def union(base: tuple[list[dict], list[dict]], extra: tuple[list[dict], list[dic
     return list(by_key.values()), list(edges.values())
 
 
+def fix_misattribution(desc: str, docs: set[str]) -> str:
+    """The LLM sometimes takes an example MCP client named in a README ("Claude Desktop") for the README's own
+    project. Name the project from the entity's source document instead."""
+    if "claude desktop project" not in desc.lower():
+        return desc
+    projects = sorted(d[len("project_"):-3] for d in docs if d.startswith("project_") and d.endswith(".md"))
+    proj = "rag-mcp-server" if "rag-mcp-server" in projects else (projects[0] if projects else "MCP server")
+    return re.sub(r"(?i)\bthe claude desktop project\b", f"the {proj} project", desc)
+
+
 def q8(mat: np.ndarray) -> str:
     return base64.b64encode(np.clip(np.round(mat * 127), -127, 127).astype(np.int8).tobytes()).decode()
 
@@ -148,6 +159,8 @@ def main() -> int:
         nodes, edges = union(from_curated(a.curated), from_lightrag(a.lightrag))
     else:
         nodes, edges = from_curated(a.curated) if a.curated else from_lightrag(a.lightrag)
+    for item in nodes + edges:
+        item["desc"] = fix_misattribution(item["desc"], item["docs"])
     idx = {n["id"]: i for i, n in enumerate(nodes)}
     edges = [e for e in edges if e["s"] in idx and e["t"] in idx and e["s"] != e["t"]]
     docs = sorted({d for n in nodes for d in n["docs"]} | {d for e in edges for d in e["docs"]})
