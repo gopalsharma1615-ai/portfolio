@@ -27,22 +27,34 @@ tests/    node --test: meet-in-the-middle == brute force; real queries give 5 va
 - **Vercel:** "Add New → Project", import this repo. `vercel.json` serves `site/`, with no build.
 - Either redeploys automatically on every push.
 
-## Replace the starter graph with the Qwen-built graph
+## The graph: Qwen3-14B extraction on a curated backbone
 
-The site ships a hand-curated starter graph (67 entities, written from the same corpus facts). To build the real
-one with your own LLM:
+`site/data/graph.json` combines two sources:
+- **Breadth:** Qwen3-14B (vLLM) extracted entities and relations from `corpus/` through graphwalk-rag/LightRAG
+  (9 documents, 53 chunks).
+- **Backbone:** a small curated graph (`build/curated.py`, 67 entities) that gives career and project questions
+  clean answers.
+
+The exporter resolves entities across both sources:
+- It merges names that differ only in case or punctuation, plus known synonyms, so "Multi-hop QA" and
+  "multi-hop question answering" become one node.
+- It folds name variants into one owner node.
+- It drops skill-list headings, file names and one-word generic nouns. Left in, these become hubs that connect
+  everything to everything.
+
+The result has 892 entities and 1,381 relations. To rebuild:
 
 ```bash
 pip install "graphwalk-rag[build,local] @ git+https://github.com/gopalsharma1615-ai/graphwalk-rag"
 export LLM_BASE_URL=http://<qwen-host>:8077/v1        # Qwen3-14B on vLLM, or any OpenAI-compatible server
 bash build/build_graph.sh --dry-run                   # chunk count and token estimate, no LLM calls
 bash build/build_graph.sh                              # extract -> verify provenance -> site/data/graph.json
-git add site/data/graph.json && git commit -m "Qwen-built graph" && git push
 ```
 
-`export_site_graph.py` re-embeds entities and relations with all-MiniLM-L6-v2, the model the browser runs, and
-stores them as int8. Graphs over 350 nodes are shown as a focused subgraph around each query. The site labels
-the graph source and build date automatically.
+The build resumes from where it stopped, and runs 4 parallel calls by default (`LLM_ASYNC`), matching vLLM's
+`--max-num-seqs`. Output is capped at 4,096 tokens per call (`LLM_MAX_TOKENS`), so a looping generation can't
+stall the build. The exporter re-embeds everything with all-MiniLM-L6-v2, the model the browser runs. Graphs
+over 350 nodes are shown as a focused subgraph around each query.
 
 ## Local preview and tests
 

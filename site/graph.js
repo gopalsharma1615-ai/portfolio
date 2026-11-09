@@ -13,9 +13,10 @@ export const GROUPS = {
   Technology: "technology",
   PhysicsConcept: "physics", Process: "physics",
   Result: "result", Metric: "result", Dataset: "result",
+  Concept: "other",
 };
 export const GROUP_LABELS = { career: "Career", project: "Project", method: "Method", technology: "Technology",
-  physics: "Physics", result: "Result & data" };
+  physics: "Physics", result: "Result & data", other: "Other" };
 
 function b64ToInt8(b64) {
   const bin = atob(b64);
@@ -41,7 +42,7 @@ export function loadGraph(json) {
   const { meta, docs } = json;
   const dim = meta.dim;
   const nodes = json.nodes.map(([id, type, desc, d], i) =>
-    ({ i, id, type, group: GROUPS[type] || "technology", desc, docs: d.map((x) => docs[x]) }));
+    ({ i, id, type, group: GROUPS[type] || "other", desc, docs: d.map((x) => docs[x]) }));
   const edges = json.edges.map(([s, t, desc, d], i) => ({ i, s, t, desc, docs: d.map((x) => docs[x]) }));
   const adj = nodes.map(() => []);
   const edgeOf = new Map();
@@ -75,21 +76,28 @@ export function vectorScorer(G, qvec) {
 
 export function findAnchors(G, query, score, maxAnchors = 3) {
   const q = ` ${norm(query)} `;
+  const qwords = q.trim().split(" ");
   const hits = [];
   for (const [name, i] of G.byName) {
     if (name.length >= 3 && q.includes(` ${name} `)) hits.push([name.length, i]);
     else if (G.nodes[i].type === "Person") {             // "Gopal" alone names "Gopal Sharma"
       const first = name.split(" ")[0];
       if (first.length >= 4 && q.includes(` ${first} `)) hits.push([first.length, i]);
+    } else if (!name.includes(" ") && name.length >= 4) {  // "qwen" names "qwen3", "gpt" does not name "gpt-4o"
+      for (const w of qwords) if (w.length >= 4 && name.startsWith(w) && name.length - w.length <= 2) hits.push([w.length, i]);
     }
   }
   hits.sort((a, b) => b[0] - a[0]);
   const out = [];
   for (const [, i] of hits) if (!out.includes(i)) out.push(i);
   const dense = G.nodes.map((n) => [score.ent(n.i), n.i]).sort((a, b) => b[0] - a[0]);
+  // When the question names something, add meaning-based anchors only if they are much closer to it;
+  // otherwise near-synonyms (an entity's own code classes) pull the walk into implementation detail.
+  const bar = out.length ? 0.6 : 0.35;
   for (const [s, i] of dense) {
     if (out.length >= maxAnchors) break;
-    if (!out.includes(i) && (s >= 0.35 || out.length === 0)) out.push(i);
+    if (G.nodes[i].type === "Person") continue;   // a person's description mentions everything: anchor by name only
+    if (!out.includes(i) && (s >= bar || out.length === 0)) out.push(i);
   }
   return { anchors: out.slice(0, maxAnchors), named: hits.length };
 }
@@ -152,6 +160,7 @@ export function meet(G, anchors, answers, k) {
 export const OWNER = { node: "Gopal Sharma", aliases: ["gopal sharma", "gopal", "sharma", "his", "him", "he", "gopal's"] };
 
 export function prepareQuery(query, owner = OWNER) {
+  if (!owner || !Array.isArray(owner.aliases)) owner = OWNER;   // tolerate Array.map's (item, index) call
   let q = ` ${query.toLowerCase()} `;
   for (const a of [...owner.aliases].sort((x, y) => y.length - x.length))
     q = q.replace(new RegExp(`(^|[^a-z])${a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?=[^a-z]|$)`, "g"), "$1 ");
@@ -186,13 +195,19 @@ export function search(G, query, score, opts = {}) {
     let rel = 0;
     for (let j = 0; j + 1 < p.length; j++) rel += score.rel(edgeIndex(G, p[j], p[j + 1]));
     rel /= p.length - 1;
-    return { path: p, score: 0.6 * rel + 0.4 * (ans.get(p[p.length - 1]) ?? 0) - 0.04 * (p.length - 2) };
+    // Portfolio prior: recruiters ask what was built and achieved, so paths ending at a project, result or role
+    // get a small boost (an answer-type prior, like answer-type gating in graphwalk-rag).
+    const endGroup = G.nodes[p[p.length - 1]].group;
+    const prior = endGroup === "project" || endGroup === "result" || endGroup === "career" ? 0.06 : 0;
+    return { path: p, score: 0.6 * rel + 0.4 * (ans.get(p[p.length - 1]) ?? 0) - 0.04 * (p.length - 2) + prior };
   }).sort((a, b) => b.score - a.score);
-  const top = [], perEnd = new Map();
+  const top = [], perEnd = new Set();
+  const isPrefix = (a, b) => a.length <= b.length && a.every((x, k) => x === b[k]);
   for (const s of scored) {
     const end = s.path[s.path.length - 1];
-    if ((perEnd.get(end) || 0) >= 1) continue;
-    perEnd.set(end, 1); top.push(s);
+    if (perEnd.has(end)) continue;
+    if (top.some((t) => isPrefix(s.path, t.path))) continue;   // a shorter copy of a chosen path adds nothing
+    perEnd.add(end); top.push(s);
     if (top.length === (opts.top ?? 5)) break;
   }
   const t1 = typeof performance !== "undefined" ? performance.now() : Date.now();

@@ -14,9 +14,11 @@ export LLM_EXTRA_BODY="${LLM_EXTRA_BODY:-{\"chat_template_kwargs\": {\"enable_th
 EMBED="local:sentence-transformers/all-MiniLM-L6-v2"   # the same model the browser runs
 
 graphwalk-rag build corpus/ --workdir build/graph_work --model "$LLM_MODEL" \
-  --embed-model "$EMBED" --embed-dim 384 --entity-types build/entity_types.txt --chunk-tokens 600 "$@"
+  --embed-model "$EMBED" --embed-dim 384 --entity-types build/entity_types.txt --chunk-tokens 600 \
+  --llm-async "${LLM_ASYNC:-4}" --llm-timeout "${LLM_TIMEOUT:-600}" "$@"   # match vLLM --max-num-seqs
 if [[ " $* " == *" --dry-run "* ]]; then exit 0; fi
 graphwalk-rag verify --workdir build/graph_work
-python build/export_site_graph.py --lightrag build/graph_work --out site/data/graph.json \
-  --source "Qwen3-14B (vLLM) via graphwalk-rag"
+# curated backbone (build/curated_graph.json) + Qwen-extracted breadth, entities resolved across both
+python build/export_site_graph.py --curated build/curated_graph.json --lightrag build/graph_work \
+  --out site/data/graph.json --source "Qwen3-14B graph + curated backbone"
 echo "done: site/data/graph.json (commit and push it; Netlify/Vercel redeploys)"

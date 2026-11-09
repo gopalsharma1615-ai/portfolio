@@ -4,7 +4,7 @@
   --line: #e1e0d9; --line-2: #c3c2b7;
   --accent: #2a78d6; --accent-ink: #ffffff;
   --g-career: #2a78d6; --g-project: #eb6834; --g-method: #1baf7a;
-  --g-technology: #eda100; --g-physics: #e87ba4; --g-result: #008300;
+  --g-technology: #eda100; --g-physics: #e87ba4; --g-result: #008300; --g-other: #898781;
   --path: #0b0b0b; --dim: rgba(11, 11, 11, .12);
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -19,7 +19,7 @@
     --line: #2c2c2a; --line-2: #383835;
     --accent: #3987e5; --accent-ink: #0d0d0d;
     --g-career: #3987e5; --g-project: #d95926; --g-method: #199e70;
-    --g-technology: #c98500; --g-physics: #d55181; --g-result: #0ca30c;
+    --g-technology: #c98500; --g-physics: #d55181; --g-result: #0ca30c; --g-other: #898781;
     --path: #f0efec; --dim: rgba(240, 239, 236, .12);
     color-scheme: dark;
   }
@@ -30,7 +30,7 @@
   --line: #2c2c2a; --line-2: #383835;
   --accent: #3987e5; --accent-ink: #0d0d0d;
   --g-career: #3987e5; --g-project: #d95926; --g-method: #199e70;
-  --g-technology: #c98500; --g-physics: #d55181; --g-result: #0ca30c;
+  --g-technology: #c98500; --g-physics: #d55181; --g-result: #0ca30c; --g-other: #898781;
   --path: #f0efec; --dim: rgba(240, 239, 236, .12);
   color-scheme: dark;
 }
